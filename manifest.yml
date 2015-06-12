@@ -1,0 +1,6 @@
+---
+applications:
+- name: myhours
+  memory: 1G
+  services:
+  - myhours-db

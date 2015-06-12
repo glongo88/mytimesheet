@@ -1,0 +1,40 @@
+#reset_minion: true
+
+# Build Environment
+build_environment: Ubuntu 12.04
+
+# language setting
+language: java
+
+#services:
+#   - mongodb
+
+
+# only build when certain Git branches are updated
+branches:
+  only:
+    - master
+
+before_script:
+  - chmod +x grailsw
+
+# Running the tests with grunt
+# script file
+script:
+ - ./grailsw clean
+ - ./grailsw compile
+ - ./grailsw war
+
+before_archive:
+  - ls
+  - mv  target/myhours-0.1.war  shippable/myhours-0.1.war
+
+after_archive:
+  # To get the URL of the api access token
+    - echo $SHIPPABLE_ARTIFACTS_URL
+  # value of the below variable will be true if archive is successful else it will be false.
+    - echo $ARTIFACTS_UPLOAD_SUCCESSFUL
+
+after_success:
+  - if [ "$BRANCH" == "master" ];then git remote add dokku dokku@46.101.182.71:heisemberg; fi
+  - if [ "$BRANCH" == "master" ]; then git push dokku master; fi
