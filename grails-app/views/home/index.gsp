@@ -65,10 +65,10 @@
         <div class="row">
             <div class="col-xs-12">
                 <div class="panel panel-marine" id="spr_3">
-                    <div class="panel-heading">
-                        <h4 class="panel-title">Calcolo uscita</h4>
-                    </div>
                     <div class="panel-body">
+
+                        <div class="p-title"><i class="fa fa-calculator"></i> Calcolo uscita</div>
+
                         <div class="row">
                             <div class="col-lg-8 col-xs-8">
                                 <input id="basic-slider" data-slider-id="slider1" type="text"><br/><br/>
@@ -88,10 +88,10 @@
 
         <div class="panel panel-marine plain toggle panelClose panelRefresh">
 
-            <div class="panel-heading">
-                <h4 class="panel-title">Ultimi giorni</h4>
-            </div>
             <div class="panel-body">
+
+                <div class="p-title"><i class="fa fa-list"></i> Ultimi inserimenti</div>
+
                 <table class="table table-hover">
                     <thead>
                     <tr>
@@ -119,57 +119,62 @@
 
     </div>
     <div class="col-xs-4">
-        <div class="panel panel-marine toggle" id="spr_1">
-            <div class="panel-heading">
-                <h4 class="panel-title">Inserisci gli orari di oggi</h4>
-            </div>
+
+        <div class="panel">
             <div class="panel-body">
+                <div class="p-title"><i class="fa fa-edit"></i> Inserisci gli orari di oggi</div>
                 <g:set var="azione" value="${recordTimeInstance.id?'update':'save'}"/>
                 <g:form id="formId" url="[resource:recordTimeInstance, action: azione]">
-                <g:hiddenField name="dataRecord" value="" id="hiddenDate"/>
-                <div class="row text-center">
-                    <h1 style="margin-top: -5px;"><span id="todayDay"></span><br/><span id="todayDate"></span></h1>
-                </div>
-                <br/>
-                <div class="row">
-                    <div class="col-xs-6">
-                        <label for="entrataTime">Entrata</label>
-                        <div class="input-group bootstrap-timepicker">
-                            <input name="entrataTime" id="entrataTime" type="time" class="form-control" value="${recordTimeInstance?.entrataTime}">
-                            %{--<joda:timePicker name="entrataTime" class="form-control timepicker" value="${recordTimeInstance?.entrataTime}" default="none" noSelection="['': '']"></joda:timePicker>--}%
-                            <span class="input-group-addon"><i class="fa fa-time"></i></span>
+                    <g:hiddenField name="dataRecord" value="" id="hiddenDate"/>
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <i style="font-size: 65px;" class="fa fa-calendar-empty"></i>
+                        </div>
+                        <div class="col-xs-9">
+                            <div id="todayDay"></div><br/><div id="todayDate"></div>
                         </div>
                     </div>
-                    <div class="col-xs-6">
-                        <label for="inizioPausaTime">Inizio pausa</label>
-                        <div class="input-group bootstrap-timepicker">
-                            <input name="inizioPausaTime" formatString="${joda.inputPattern()}" id="inizioPausaTime" type="time" class="form-control" value="${recordTimeInstance?.inizioPausaTime}">
-                            <span class="input-group-addon"><i class="fa fa-time"></i></span>
+                    <br/>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <label for="entrataTime">Entrata</label>
+                            <div class="input-group bootstrap-timepicker">
+                                <input name="entrataTime" id="entrataTime" type="time" class="form-control" value="${recordTimeInstance?.entrataTime}">
+                                %{--<joda:timePicker name="entrataTime" class="form-control timepicker" value="${recordTimeInstance?.entrataTime}" default="none" noSelection="['': '']"></joda:timePicker>--}%
+                                <span class="input-group-addon"><i class="fa fa-time"></i></span>
+                            </div>
+                        </div>
+                        <div class="col-xs-6">
+                            <label for="inizioPausaTime">Inizio pausa</label>
+                            <div class="input-group bootstrap-timepicker">
+                                <input name="inizioPausaTime" formatString="${joda.inputPattern()}" id="inizioPausaTime" type="time" class="form-control" value="${recordTimeInstance?.inizioPausaTime}">
+                                <span class="input-group-addon"><i class="fa fa-time"></i></span>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <br/>
-                <div class="row">
-                    <div class="col-xs-6">
-                        <label for="finePausaTime">Fine pausa</label>
-                        <div class="input-group bootstrap-timepicker">
-                            <input name="finePausaTime" id="finePausaTime" type="time" class="form-control" value="${recordTimeInstance?.finePausaTime}">
-                            <span class="input-group-addon"><i class="fa fa-time"></i></span>
+                    <br/>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <label for="finePausaTime">Fine pausa</label>
+                            <div class="input-group bootstrap-timepicker">
+                                <input name="finePausaTime" id="finePausaTime" type="time" class="form-control" value="${recordTimeInstance?.finePausaTime}">
+                                <span class="input-group-addon"><i class="fa fa-time"></i></span>
+                            </div>
+                        </div>
+                        <div class="col-xs-6">
+                            <label for="uscitaTime">Uscita</label>
+                            <div class="input-group bootstrap-timepicker">
+                                <input name="uscitaTime" id="uscitaTime" type="time" class="form-control" value="${recordTimeInstance?.uscitaTime}">
+                                <span class="input-group-addon"><i class="fa fa-time"></i></span>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-xs-6">
-                        <label for="uscitaTime">Uscita</label>
-                        <div class="input-group bootstrap-timepicker">
-                            <input name="uscitaTime" id="uscitaTime" type="time" class="form-control" value="${recordTimeInstance?.uscitaTime}">
-                            <span class="input-group-addon"><i class="fa fa-time"></i></span>
-                        </div>
+                    <br/>
+                    <div class="row text-center">
+                        <input id="submitButton" type="submit" onclick="checkValues()" class="btn btn-success btn-lg" value="${recordTimeInstance.id?'Aggiorna':'Salva'}">
                     </div>
-                </div>
-                <br/>
-                <div class="row text-center">
-                    <input id="submitButton" type="submit" onclick="checkValues()" class="btn btn-success btn-lg" value="${recordTimeInstance.id?'Aggiorna':'Salva'}">
-                </div>
                 </g:form>
+
             </div>
         </div>
 
@@ -238,7 +243,7 @@
     $('#hiddenDate').val(localLocale.format('DD/MM/YYYY'));
 
     $('#todayDay').text(localLocale.format('dddd'));
-    $('#todayDate').text(localLocale.format('DD MMMM YYYY'));
+    $('#todayDate').text(localLocale.format('DD MMM YY'));
 
     $('.timepicker').timepicker({
         showMeridian: false,

@@ -7,7 +7,7 @@ import groovy.time.TimeDuration
 
 import java.text.SimpleDateFormat
 
-@Secured(['ROLE_USER'])
+@Secured(['ROLE_USER', 'ROLE_ADMIN'])
 class HomeController {
 
     def springSecurityService

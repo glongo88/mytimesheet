@@ -29,10 +29,10 @@ class Utente {
     static constraints = {
         username blank: false, unique: true, email: true
         password blank: false
-        nome blank: false
-        cognome blank: false
-        dataNascita nullable: false
-        sesso nullable: false
+        nome blank: true
+        cognome blank: true
+        dataNascita nullable: true
+        sesso nullable: true
         posizione nullable: true
         citta nullable: true
     }
