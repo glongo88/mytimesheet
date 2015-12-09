@@ -19,6 +19,22 @@ dataSource {
     password = ""
 }
 
+/*dataSource {
+    pooled = true
+    properties {
+        maxActive = 50
+        maxIdle = 3
+        minIdle = 1
+        initialSize = 1
+        minEvictableIdleTimeMillis = 60000
+        timeBetweenEvictionRunsMillis = 60000
+        maxWait = 10000
+        testWhileIdle=true
+        validationQuery = "SELECT 1"
+    }
+    driverClassName = "com.mysql.jdbc.Driver"
+}*/
+
 
 hibernate {
     cache.use_second_level_cache = true
@@ -44,13 +60,10 @@ environments {
 
     production {
         dataSource {
-            /*dbCreate = "update"
-            jndiName = "java:comp/env/externalDatasource"*/
             dbCreate = "update"
-            def dbInfo = cloud?.getServiceInfo('myhours-db')
-            url = dbInfo?.jdbcUrl
-            username = dbInfo?.userName
-            password = dbInfo?.password
+            url = "jdbc:mysql://${System.getProperty('dbhost')}/${System.getProperty('dbname')}?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8"
+            username = System.getProperty('dbuser')
+            password = System.getProperty('dbpassword')
         }
     }
 

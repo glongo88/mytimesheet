@@ -30,33 +30,27 @@
 
         <div class="row">
 
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 ui-sortable">
-                <div class="tile" style="background-color: #48D1CC; color: white;">
-                    <div class="tile-icon"><i class="fa fa-time fa-4x"></i></div>
-                    <div class="tile-content">
-                        <div class="number" style="font-weight: bold; font-size: 37px;">${util.printMinutesSimple(minuti: statistics['totaleLavoratoSettimana'])?:"0:0"}</div>
-                        <h3>Totale ore settimana</h3>
-                    </div>
+            <div class="col-xs-4 ui-248">
+                <div class="item">
+                    <div class="icon bg-lblue"><i class="fa fa-hourglass-start"></i></div>
+                    <div class="category-title-box-index"><h3><a style="color: white; margin-top: 3px;" href="#">Tot. Settimana</a></h3></div>
+                    <h2 class="text-right"><span class="blue numberClass">${util.printMinutesSimple(minuti: statistics['totaleLavoratoSettimana'])?:"0:0"}</span></h2>
                 </div>
             </div>
 
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 ui-sortable">
-                <div class="tile blue">
-                    <div class="tile-icon"><i class="fa fa-time fa-4x"></i></div>
-                    <div class="tile-content">
-                        <div class="number" style="font-weight: bold; font-size: 37px;">${util.printMinutesSimple(minuti: statistics['totaleLavoratoMese'])?:"0:0"}</div>
-                        <h3>Totale ore mese</h3>
-                    </div>
+            <div class="col-xs-4 ui-248">
+                <div class="item">
+                    <div class="icon bg-yellow"><i class="fa fa-hourglass-end"></i></div>
+                    <div class="category-title-box-index"><h3><a style="color: white; margin-top: 3px;" href="#">Tot. Mese</a></h3></div>
+                    <h2 class="text-right"><span class="blue numberClass">${util.printMinutesSimple(minuti: statistics['totaleLavoratoMese'])?:"0:0"}</span></h2>
                 </div>
             </div>
 
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 ui-sortable">
-                <div class="tile green">
-                    <div class="tile-icon"><i class="fa fa-money fa-4x"></i></div>
-                    <div class="tile-content">
-                        <div class="number" style="font-weight: bold; font-size: 37px;">${util.printMinutesSimple(minuti: statistics['minutiStraordinarioMese'])?:"0:0"}</div>
-                        <h3>Straordinari mese</h3>
-                    </div>
+            <div class="col-xs-4 ui-248">
+                <div class="item">
+                    <div class="icon bg-green"><i class="fa fa-money"></i></div>
+                    <div class="category-title-box-index"><h3><a style="color: white; margin-top: 3px;" href="#">Straordinari</a></h3></div>
+                    <h2 class="text-right"><span class="blue numberClass">${util.printMinutesSimple(minuti: statistics['minutiStraordinarioMese'])?:"0:0"}</span></h2>
                 </div>
             </div>
 
