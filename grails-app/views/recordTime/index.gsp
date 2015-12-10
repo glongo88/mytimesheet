@@ -32,52 +32,53 @@
 
 
     <div class="row">
-        <div class="col-xs-12 panel panel-default plain">
-            <div class="panel-heading white-bg">
-                <div class="row">
-                    <div class="col-xs-1">
-                        <g:link mapping="dettaglio-mese" params="[month: prevMonth.format('MM'), year: prevMonth.format('yyyy')]"><h2 class="title-month"><i class="fa fa-chevron-left"></i></h2></g:link>
-                    </div>
-                    <div class="col-xs-5 text-right">
-                        <h2 class="title-month" id="monthTitle"></h2>
-                    </div>
-                    <div class="col-xs-3">
-                        <div style="margin-top: 20px;" class="input-group">
-                            <input id="monthValue" class="form-control datepicker" type="text" value="" placeholder="Seleziona un altro mese">
-                            <span class="input-group-addon"><i class="fa-calendar"></i></span>
+        <div class="col-xs-12">
+            <div class="panel panel-default plain">
+                <div class="panel-heading white-bg">
+                    <div class="row">
+                        <div class="col-xs-1">
+                            <g:link mapping="dettaglio-mese" params="[month: prevMonth.format('MM'), year: prevMonth.format('yyyy')]"><h2 class="title-month"><i class="fa fa-chevron-left"></i></h2></g:link>
+                        </div>
+                        <div class="col-xs-5 text-right">
+                            <h2 class="title-month" id="monthTitle"></h2>
+                        </div>
+                        <div class="col-xs-3">
+                            <div style="margin-top: 20px;" class="input-group">
+                                <input id="monthValue" class="form-control datepicker" type="text" value="" placeholder="Seleziona un altro mese">
+                                <span class="input-group-addon"><i class="fa-calendar"></i></span>
+                            </div>
+                        </div>
+                        <div class="col-xs-offset-2 col-xs-1 text-right">
+                            <g:link mapping="dettaglio-mese" params="[month: nextMonth.format('MM'), year: nextMonth.format('yyyy')]"><h2 class="title-month"><i class="fa fa-chevron-right"></i></h2></g:link>
                         </div>
                     </div>
-                    <div class="col-xs-offset-2 col-xs-1 text-right">
-                        <g:link mapping="dettaglio-mese" params="[month: nextMonth.format('MM'), year: nextMonth.format('yyyy')]"><h2 class="title-month"><i class="fa fa-chevron-right"></i></h2></g:link>
-                    </div>
-                </div>
 
-            </div>
-            <div class="panel-body">
-                <table class="table table-hover" id="recordTable2">
-                    <thead>
-                    <tr>
-                        <g:sortableColumn width="15%" property="dataRecord" title="${message(code: 'recordTime.dataRecord.label', default: 'Data')}" />
-                        <g:sortableColumn width="10%" property="entrataTime" title="${message(code: 'recordTime.entrataTime.label', default: 'Entrata')}" />
-                        <g:sortableColumn width="15%" property="inizioPausaTime" title="${message(code: 'recordTime.inizioPausaTime.label', default: 'Inizio Pausa')}" />
-                        <g:sortableColumn width="15%" property="finePausaTime" title="${message(code: 'recordTime.finePausaTime.label', default: 'Fine Pausa')}" />
-                        <g:sortableColumn width="15%" property="uscitaTime" title="${message(code: 'recordTime.uscitaTime.label', default: 'Uscita')}" />
-                        <g:sortableColumn width="15%" property="totaleLavorato" title="${message(code: 'recordTime.totaleLavorato.label', default: 'Totale')}" />
-                        <g:sortableColumn width="15%" property="minutiStraordinario" title="${message(code: 'recordTime.minutiStraordinario.label', default: 'Straordinario')}" />
-                        <th></th>
-                    </tr>
-                    </thead>
-                    <tbody>
+                </div>
+                <div class="panel-body">
+                    <table class="table table-hover" id="recordTable2">
+                        <thead>
+                        <tr>
+                            <g:sortableColumn width="15%" property="dataRecord" title="${message(code: 'recordTime.dataRecord.label', default: 'Data')}" />
+                            <g:sortableColumn width="10%" property="entrataTime" title="${message(code: 'recordTime.entrataTime.label', default: 'Entrata')}" />
+                            <g:sortableColumn width="15%" property="inizioPausaTime" title="${message(code: 'recordTime.inizioPausaTime.label', default: 'Inizio Pausa')}" />
+                            <g:sortableColumn width="15%" property="finePausaTime" title="${message(code: 'recordTime.finePausaTime.label', default: 'Fine Pausa')}" />
+                            <g:sortableColumn width="15%" property="uscitaTime" title="${message(code: 'recordTime.uscitaTime.label', default: 'Uscita')}" />
+                            <g:sortableColumn width="15%" property="totaleLavorato" title="${message(code: 'recordTime.totaleLavorato.label', default: 'Totale')}" />
+                            <g:sortableColumn width="15%" property="minutiStraordinario" title="${message(code: 'recordTime.minutiStraordinario.label', default: 'Straordinario')}" />
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
                         <util:printTable records="${records}" month="${month}" year="${year}"/>
-                    </tbody>
-                </table>
-                <div class="pagination">
-                    <g:paginate total="${recordTimeInstanceCount ?: 0}" />
+                        </tbody>
+                    </table>
+                    <div class="pagination">
+                        <g:paginate total="${recordTimeInstanceCount ?: 0}" />
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-
 
     <div class="modal fade" id="loadingModal" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
         <div class="modal-dialog modal-dialog-center" style="margin-top: -103px; margin-left: -300px;">
