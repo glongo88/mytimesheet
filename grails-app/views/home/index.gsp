@@ -32,7 +32,7 @@
 
             <div class="col-xs-4 ui-248">
                 <div class="item">
-                    <div class="icon bg-lblue"><i class="fa fa-hourglass-start"></i></div>
+                    <div class="icon bg-danger"><i class="fa fa-hourglass-start"></i></div>
                     <div class="category-title-box-index"><h3><a style="color: white; margin-top: 3px;" href="#">Tot. Settimana</a></h3></div>
                     <h2 class="text-right"><span class="blue numberClass">${util.printMinutesSimple(minuti: statistics['totaleLavoratoSettimana'])?:"0:0"}</span></h2>
                 </div>

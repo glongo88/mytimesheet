@@ -1,25 +1,21 @@
 import org.springframework.cloud.CloudFactory
 import org.springframework.cloud.CloudException
 
-//dataSource {
-//    pooled = true
-//    driverClassName = "com.mysql.jdbc.Driver"
-//    dialect = "org.hibernate.dialect.MySQL5InnoDBDialect"
-//}
 
 def cloud = null
 try {
     cloud = new CloudFactory().cloud
 } catch (CloudException) {}
 
+/*
 dataSource {
     pooled = false;
     driverClassName = "org.h2.Driver"
     username = "sa"
     password = ""
-}
+}*/
 
-/*dataSource {
+dataSource {
     pooled = true
     properties {
         maxActive = 50
@@ -33,7 +29,7 @@ dataSource {
         validationQuery = "SELECT 1"
     }
     driverClassName = "com.mysql.jdbc.Driver"
-}*/
+}
 
 
 hibernate {
@@ -48,7 +44,9 @@ environments {
     development {
         dataSource {
             dbCreate = "update" // one of 'create', 'create-drop','update'
-            url = "jdbc:h2:file:myHours;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE"
+            url = "jdbc:mysql://localhost:3306/myhours?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8"
+            username = "root"
+            password = "951357"
         }
     }
     test {
@@ -61,9 +59,9 @@ environments {
     production {
         dataSource {
             dbCreate = "update"
-            url = "jdbc:mysql://${System.getProperty('dbhost')}/${System.getProperty('dbname')}?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8"
-            username = System.getProperty('dbuser')
-            password = System.getProperty('dbpassword')
+            url = "jdbc:mysql://${System.getProperty('RDS_HOSTNAME')}:${System.getProperty('RDS_PORT')}/${System.getProperty('RDS_DB_NAME')}?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8"
+            username = System.getProperty('RDS_USERNAME')
+            password = System.getProperty('RDS_PASSWORD')
         }
     }
 
