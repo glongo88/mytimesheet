@@ -27,70 +27,80 @@
 
 <div class="row">
     <div class="col-lg-12 col-md-12 text-center">
-        <h2 class="title-month-black" id="monthTitle"></h2>
+        <div class="panel title-month-white"><i class="fa fa-calendar"></i> <span id="monthTitle"></span></div>
     </div>
 </div>
 
 <div class="row">
 
-    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
-        <div class="animated zoomInLeft custom-panel">
-            <h3 style=""><i class="fa fa-line-chart"></i> Totale</h3>
-            <div class="row" style="margin-top: 15px;">
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-center">
-                    <div class="box-riepilogo">
-                        <div class="riepilogo-label">Giorni</div>
-                        <div class="riepilogo-value">${stats['numeroGiorni']}</div>
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+
+        <div class="panel panel-marine plain toggle panelClose panelRefresh animated zoomInRight">
+            <div class="panel-body">
+                <div class="p-title"><i class="fa fa-line-chart"></i> Totale</div>
+                <div class="row" style="margin-top: 15px;">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-center">
+                        <div class="box-riepilogo">
+                            <div class="riepilogo-label">Giorni</div>
+                            <div class="riepilogo-value">${stats['numeroGiorni']}</div>
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-center">
-                    <div class="box-riepilogo">
-                        <div class="riepilogo-label">Ore</div>
-                        <div class="riepilogo-value"><util:printMinutesSimple minuti="${stats['totaleLavorato']}"/></div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-center">
+                        <div class="box-riepilogo">
+                            <div class="riepilogo-label">Ore</div>
+                            <div class="riepilogo-value"><util:printMinutesSimple minuti="${stats['totaleLavorato']}"/></div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+
     </div>
 
-    <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
-        <div class="animated zoomInRight custom-panel">
-            <h3 style=""><i class="fa fa-bar-chart"></i> Medie</h3>
-            <div class="row" style="margin-top: 15px;">
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-center">
-                    <div class="box-riepilogo" style="background-color: #48D1CC;">
-                        <div class="riepilogo-label">Media ore al giorno</div>
-                        <div class="riepilogo-value"><util:printMinutesSimple minuti="${stats['avgTotaleLavorato']}"/></div>
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+
+        <div class="panel panel-marine plain toggle panelClose panelRefresh animated zoomInRight">
+            <div class="panel-body">
+                <div class="p-title"><i class="fa fa-bar-chart"></i> Medie</div>
+                <div class="row" style="margin-top: 15px;">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-center">
+                        <div class="box-riepilogo" style="background-color: #48D1CC;">
+                            <div class="riepilogo-label">Media ore al giorno</div>
+                            <div class="riepilogo-value"><util:printMinutesSimple minuti="${stats['avgTotaleLavorato']}"/></div>
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-center">
-                    <div class="box-riepilogo" style="background-color: #48D1CC;">
-                        <div class="riepilogo-label">Media pausa pranzo</div>
-                        <div class="riepilogo-value"><util:printMinutesSimple minuti="${stats['avgPausaPranzo']}"/></div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-center">
+                        <div class="box-riepilogo" style="background-color: #48D1CC;">
+                            <div class="riepilogo-label">Media pausa pranzo</div>
+                            <div class="riepilogo-value"><util:printMinutesSimple minuti="${stats['avgPausaPranzo']}"/></div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+
     </div>
 
 </div>
 
-<br/>
-
 <div class="row">
 
-    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
-        <div class="animated zoomInLeft custom-panel">
-            <h3 style=""><i class="fa fa-money"></i> Totale straordinari</h3>
-            <div class="row" style="margin-top: 15px;">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
-                    <div class="box-riepilogo" style="background-color: #66CDAA;">
-                        <div class="riepilogo-label">Ore</div>
-                        <div class="riepilogo-value"><util:printMinutesSimple minuti="${stats['minutiStraordinario']}"/></div>
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+
+        <div class="panel panel-marine plain toggle panelClose panelRefresh animated zoomInLeft">
+            <div class="panel-body">
+                <div class="p-title"><i class="fa fa-money"></i> Totale straordinari</div>
+                <div class="row" style="margin-top: 15px;">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+                        <div class="box-riepilogo" style="background-color: #66CDAA;">
+                            <div class="riepilogo-label">Ore</div>
+                            <div class="riepilogo-value"><util:printMinutesSimple minuti="${stats['minutiStraordinario']}"/></div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+
     </div>
 
 </div>

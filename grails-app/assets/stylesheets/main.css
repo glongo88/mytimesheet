@@ -1350,7 +1350,7 @@ body.full-screen #header {
     border-bottom: none;
     margin: 12.5px 0 12.5px 0;
     padding: 0;
-    background: #96DED1;
+    /*background: rgba(150, 222, 209, 0.65);*/
     width: auto;
     font-family: 'Paytone One', sans-serif;
     color: white;
