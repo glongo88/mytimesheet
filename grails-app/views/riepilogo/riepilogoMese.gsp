@@ -40,13 +40,13 @@
                 <div class="p-title"><i class="fa fa-line-chart"></i> Totale</div>
                 <div class="row" style="margin-top: 15px;">
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-center">
-                        <div class="box-riepilogo">
+                        <div class="box-riepilogo" style="background-color: #48D1CC;">
                             <div class="riepilogo-label">Giorni</div>
                             <div class="riepilogo-value">${stats['numeroGiorni']}</div>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-center">
-                        <div class="box-riepilogo">
+                        <div class="box-riepilogo" style="background-color: #48D1CC;">
                             <div class="riepilogo-label">Ore</div>
                             <div class="riepilogo-value"><util:printMinutesSimple minuti="${stats['totaleLavorato']}"/></div>
                         </div>
@@ -92,7 +92,7 @@
                 <div class="p-title"><i class="fa fa-money"></i> Totale straordinari</div>
                 <div class="row" style="margin-top: 15px;">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
-                        <div class="box-riepilogo" style="background-color: #66CDAA;">
+                        <div class="box-riepilogo" style="background-color: #48D1CC;">
                             <div class="riepilogo-label">Ore</div>
                             <div class="riepilogo-value"><util:printMinutesSimple minuti="${stats['minutiStraordinario']}"/></div>
                         </div>

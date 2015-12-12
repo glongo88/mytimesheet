@@ -16,6 +16,7 @@ class Utente {
     Date dataNascita
     String sesso
     String posizione = "Posizione lavorativa"
+    String azienda
 
     Preferences preferenze = new Preferences()
 
@@ -35,6 +36,7 @@ class Utente {
         sesso nullable: true
         posizione nullable: true
         citta nullable: true
+        azienda nullable: true
     }
 
     static mapping = {

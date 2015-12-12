@@ -47,7 +47,7 @@
             <div class="panel-footer white-bg">
                 <ul class="profile-info">
                     <li><i class="fa fa-calendar"></i> ${formatDate(format: 'dd/MM/yyyy', date: utente.dataNascita)}</li>
-                    <li><i class="ec-location"></i> Milano, Italia</li>
+                    <li><i class="ec-location"></i> ${utente?.citta}</li>
                     <li><i class="ec-mail"></i> ${utente?.username}</li>
                 </ul>
             </div>
@@ -63,7 +63,7 @@
                 <div class="alert alert-success fade in">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
                     <i class="fa-ok alert-icon s24"></i>
-                    <strong>Bene!</strong> Il tuo profilo è stato aggiornato correttamente.
+                    <strong>Bene!</strong> ${flash.message}
                 </div>
             </g:if>
             <div class="panel-heading white-bg">
@@ -86,6 +86,14 @@
                     <div class="form-group">
                         <label class="control-label">Posizione lavorativa</label>
                         <input type="text" name="posizione" class="form-control" required="required" value="${utente.posizione}">
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Azienda attuale</label>
+                        <input type="text" name="azienda" class="form-control" value="${utente.azienda}">
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Città</label>
+                        <input type="text" name="citta" class="form-control" value="${utente.citta}">
                     </div>
                     <div class="form-group mb15">
                         <button type="submit" class="btn btn-primary">Aggiorna</button>

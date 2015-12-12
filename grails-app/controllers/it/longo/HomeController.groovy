@@ -113,7 +113,7 @@ class HomeController {
         user.save flush: true
         springSecurityService.reauthenticate user.username
 
-        flash.message = "Profilo aggiornato con successo"
+        flash.message = "Il tuo profilo è stato aggiornato correttamente"
         render(view: 'profile', model: [utente: springSecurityService.currentUser])
     }
 }
