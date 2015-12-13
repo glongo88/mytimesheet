@@ -9,6 +9,7 @@ import grails.transaction.Transactional
 class PreferencesController {
 
     def springSecurityService
+    def timeService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -64,6 +65,8 @@ class PreferencesController {
         }
 
         preferencesInstance.save flush: true
+
+        timeService.updateStraordinari()
 
         flash.message = "Impostazioni aggiornate correttamente"
 

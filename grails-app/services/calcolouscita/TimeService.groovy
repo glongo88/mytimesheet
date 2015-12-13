@@ -4,6 +4,7 @@ import grails.transaction.Transactional
 import groovy.time.TimeCategory
 import groovy.time.TimeDuration
 import it.longo.RecordTime
+import it.longo.Utente
 import org.joda.time.DateTime
 
 @Transactional
@@ -43,11 +44,9 @@ class TimeService {
 
     def setMinutiLavorati(RecordTime recordTimeInstance) {
 
+        //c'è la pausa pranzo
         if(recordTimeInstance.entrataTime!=null && recordTimeInstance.inizioPausaTime!=null && recordTimeInstance.finePausaTime!=null && recordTimeInstance.uscitaTime!=null) {
-            if(recordTimeInstance.entrataTime!="vuoto" &&
-                    recordTimeInstance.inizioPausaTime!="vuoto" &&
-                    recordTimeInstance.finePausaTime!="vuoto" &&
-                    recordTimeInstance.uscitaTime!="vuoto") {
+            if(recordTimeInstance.entrataTime!="vuoto" && recordTimeInstance.inizioPausaTime!="vuoto" && recordTimeInstance.finePausaTime!="vuoto" && recordTimeInstance.uscitaTime!="vuoto") {
                 def ingressoDate = Date.parse("dd/MM/yyyy HH:mm", new Date().format("dd/MM/yyyy")+" "+recordTimeInstance.entrataTime)
                 def inizioPausaDate = Date.parse("dd/MM/yyyy HH:mm", new Date().format("dd/MM/yyyy")+" "+recordTimeInstance.inizioPausaTime)
                 def finePausaDate = Date.parse("dd/MM/yyyy HH:mm", new Date().format("dd/MM/yyyy")+" "+recordTimeInstance.finePausaTime)
@@ -57,6 +56,16 @@ class TimeService {
 
                 recordTimeInstance.totaleLavorato = durataTotale.hours*60 + durataTotale.minutes
             }
+        //non c'è la pausa pranzo
+        } else if(recordTimeInstance.entrataTime!=null && recordTimeInstance.inizioPausaTime==null && recordTimeInstance.finePausaTime==null && recordTimeInstance.uscitaTime!=null) {
+
+            def ingressoDate = Date.parse("dd/MM/yyyy HH:mm", new Date().format("dd/MM/yyyy")+" "+recordTimeInstance.entrataTime)
+            def uscitaDate = Date.parse("dd/MM/yyyy HH:mm", new Date().format("dd/MM/yyyy")+" "+recordTimeInstance.uscitaTime)
+
+            TimeDuration durataTotale = TimeCategory.minus(uscitaDate, ingressoDate)
+
+            recordTimeInstance.totaleLavorato = durataTotale.hours*60 + durataTotale.minutes
+
         }
 
     }
@@ -76,9 +85,13 @@ class TimeService {
 
     }
 
-    def setStraordinario(RecordTime recordTimeInstance) {
+    def setStraordinario(RecordTime recordTimeInstance, Integer totaleOreGiornaliere = 8) {
         if(recordTimeInstance.totaleLavorato) {
-            recordTimeInstance.minutiStraordinario = recordTimeInstance.totaleLavorato - 8*60
+            if((recordTimeInstance.totaleLavorato - totaleOreGiornaliere*60)>0) {
+                recordTimeInstance.minutiStraordinario = recordTimeInstance.totaleLavorato - totaleOreGiornaliere*60
+            } else {
+                recordTimeInstance.minutiStraordinario = 0
+            }
         }
     }
 
@@ -118,6 +131,15 @@ class TimeService {
         def ore = (int)minutes/60
         def minuti = (int)minutes%60
         return "${ore<9?'0':''}${ore>0?ore:0}:${minuti<9?'0':''}${minuti>0?minuti:0}"
+    }
+
+    def updateStraordinari() {
+        Utente utente = springSecurityService.currentUser
+        RecordTime.createCriteria().list {
+            utente == springSecurityService.currentUser
+        }?.each {
+            setStraordinario(it, utente?.preferenze?.totaleOreGiornaliere)
+        }
     }
 
 }

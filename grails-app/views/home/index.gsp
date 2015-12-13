@@ -15,14 +15,10 @@
 <body>
 
 <div class="row">
-
     <div class="col-lg-12 heading">
         <h1 class="page-header"><i class="fa fa-dashboard"></i> Dashboard</h1>
-
-        <ul id="crumb" class="breadcrumb">
-        </ul>
+        <ul id="crumb" class="breadcrumb"></ul>
     </div>
-
 </div>
 
 <div class="row">

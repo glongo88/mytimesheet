@@ -6,6 +6,7 @@ class Preferences {
     Boolean isHalfTime = false
 
     Integer minPausaPranzo = 0
+    Integer totaleOreGiornaliere = 8
 
     static belongsTo = [utente: Utente]
 

@@ -33,10 +33,6 @@ class RecordTimeController {
         def monthNextNumber = params.month.toInteger()+1
 
         DateTime dateTime = new DateTime(params.year.toInteger(), params.month.toInteger(), 1, 0, 0);
-        DateTime firstDate = dateTime.dayOfMonth().withMinimumValue()
-        firstDate = firstDate.minusDays(1)
-        DateTimeFormatter fmt = DateTimeFormat.forPattern("dd/MM/yyyy");
-        def parsedDate = firstDate.toDate().parse("dd/MM/yyyy", fmt.print(firstDate))
         def lista = RecordTime.where {
             utente == springSecurityService.currentUser
             year(dataRecord) == dateTime.toDate().format("yyyy")
@@ -82,7 +78,8 @@ class RecordTimeController {
             return
         }
 
-        recordTimeInstance.utente = springSecurityService.currentUser
+        Utente utente = springSecurityService.currentUser
+        recordTimeInstance.utente = utente
 
         if (recordTimeInstance.hasErrors()) {
             println "Errori: ${recordTimeInstance.errors}"
@@ -92,7 +89,7 @@ class RecordTimeController {
 
         timeService.setMinutiLavorati(recordTimeInstance)
         timeService.setMinutiPausa(recordTimeInstance)
-        timeService.setStraordinario(recordTimeInstance)
+        timeService.setStraordinario(recordTimeInstance, utente?.preferenze?.totaleOreGiornaliere)
 
         flash.title = "${message(code: 'record.creato.title')}"
         flash.message = "${message(code: 'record.creato.messaggio')}"
@@ -110,7 +107,8 @@ class RecordTimeController {
             return
         }
 
-        recordTimeInstance.utente = springSecurityService.currentUser
+        Utente utente = springSecurityService.currentUser
+        recordTimeInstance.utente = utente
 
         if (recordTimeInstance.hasErrors()) {
             println "Errori: ${recordTimeInstance.errors}"
@@ -120,7 +118,7 @@ class RecordTimeController {
 
         timeService.setMinutiLavorati(recordTimeInstance)
         timeService.setMinutiPausa(recordTimeInstance)
-        timeService.setStraordinario(recordTimeInstance)
+        timeService.setStraordinario(recordTimeInstance, utente?.preferenze?.totaleOreGiornaliere)
 
         flash.title = "${message(code: 'record.creato.title')}"
         flash.message = "${message(code: 'record.creato.messaggio')}"
@@ -133,11 +131,12 @@ class RecordTimeController {
     }
 
     def editLive = {
+        Utente utente = springSecurityService.currentUser
         RecordTime recordTimeInstance = RecordTime.get(params.pk)
         recordTimeInstance."${params.name}" = "${params.value}"
         timeService.setMinutiLavorati(recordTimeInstance)
         timeService.setMinutiPausa(recordTimeInstance)
-        timeService.setStraordinario(recordTimeInstance)
+        timeService.setStraordinario(recordTimeInstance, utente?.preferenze?.totaleOreGiornaliere)
         saveInstance(recordTimeInstance)
         render 'ok'
         //response.status = 200
@@ -171,11 +170,12 @@ class RecordTimeController {
         recordTimeInstance.finePausaTime = params.finePausaTime
         recordTimeInstance.uscitaTime = params.uscitaTime
 
-        recordTimeInstance.utente = springSecurityService.currentUser
+        Utente utente = springSecurityService.currentUser
+        recordTimeInstance.utente = utente
 
         timeService.setMinutiLavorati(recordTimeInstance)
         timeService.setMinutiPausa(recordTimeInstance)
-        timeService.setStraordinario(recordTimeInstance)
+        timeService.setStraordinario(recordTimeInstance, utente?.preferenze?.totaleOreGiornaliere)
 
         saveInstance(recordTimeInstance)
 
@@ -194,7 +194,8 @@ class RecordTimeController {
 
         bindData(recordTimeInstance, params, [exclude:['dataRecord']])
 
-        recordTimeInstance.utente = springSecurityService.currentUser
+        Utente utente = springSecurityService.currentUser
+        recordTimeInstance.utente = utente
 
         if (recordTimeInstance.hasErrors()) {
             println "Errori: ${recordTimeInstance.errors}"
@@ -204,7 +205,7 @@ class RecordTimeController {
 
         timeService.setMinutiLavorati(recordTimeInstance)
         timeService.setMinutiPausa(recordTimeInstance)
-        timeService.setStraordinario(recordTimeInstance)
+        timeService.setStraordinario(recordTimeInstance, utente?.preferenze?.totaleOreGiornaliere)
 
         recordTimeInstance.save flush: true
 
