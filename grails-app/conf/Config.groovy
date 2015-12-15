@@ -1,3 +1,4 @@
+import it.longo.Utente
 import org.apache.log4j.net.SMTPAppender
 
 // locations to search for config files that get merged into the main config;
@@ -182,3 +183,19 @@ grails {
 grails.databinding.dateFormats = ['dd/MM/yyyy']
 
 //grails.config.locations = [ "classpath:app-config.properties"]
+
+grails.plugin.springsecurity.useSecurityEventListener = true // enable events
+grails.plugin.springsecurity.onInteractiveAuthenticationSuccessEvent = { e, appCtx ->
+    Utente.withTransaction {
+        def user = Utente.findById(appCtx?.springSecurityService?.principal?.id)
+        if(!user?.isAttached())
+            user?.attach()
+        if(!user?.lastLogin) {
+            user?.firstLogin = true
+        } else {
+            user?.firstLogin = false
+        }
+        user?.lastLogin = new Date() // update login time
+        user?.save(flush: true, failOnError: true)
+    }
+}

@@ -47,7 +47,8 @@ class HomeController {
         render view: 'index', model: [recordTimeInstance: todayRecord, recordList: recordList,
                 oraUscita: oraUscita,
                 statistics: statistics,
-                liveCountFirst: liveCountFirst, liveCountSecond: liveCountSecond]
+                liveCountFirst: liveCountFirst, liveCountSecond: liveCountSecond,
+                isFirstVisit: springSecurityService.currentUser?.firstLogin]
 
     }
 

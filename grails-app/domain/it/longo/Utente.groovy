@@ -20,6 +20,9 @@ class Utente {
 
     Preferences preferenze = new Preferences()
 
+    Date lastLogin
+
+    boolean firstLogin = true
     boolean enabled = true
     boolean accountExpired
     boolean accountLocked
@@ -37,6 +40,7 @@ class Utente {
         posizione nullable: true
         citta nullable: true
         azienda nullable: true
+        lastLogin nullable: true, blank: true
     }
 
     static mapping = {

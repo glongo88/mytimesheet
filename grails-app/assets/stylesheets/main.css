@@ -687,7 +687,7 @@ body.full-screen #header {
     height: 50px;
     margin-bottom: 0;
     padding-right: 20px;
-    background: #48D1CC;
+    background: #32C8DE;
     border-radius: 0;
     border: none;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
@@ -1034,8 +1034,8 @@ body.full-screen #header {
     left: 0;
     bottom: 0;
     width: 210px;
-    background: #48D1CC;
-    border-right: 1px solid #48D1CC;
+    background: #32C8DE;
+    border-right: 1px solid #32C8DE;
     z-index: -1;
 }
 #sidebar .sidebar-inner {
@@ -1086,7 +1086,7 @@ body.full-screen #header {
     float: left;
     width: 100%;
     margin-top: 0;
-    border-right: 1px solid #48D1CC;
+    border-right: 1px solid #32C8DE;
 }
 #sidebar #sideNav li a {
     font-family: 'Paytone One', sans-serif;
@@ -1095,7 +1095,7 @@ body.full-screen #header {
     color: #fff;
     height: 50px;
     border-radius: 0;
-    background: #48D1CC !important;
+    background: #32C8DE !important;
     -webkit-transition: background;
     transition: background;
     -webkit-transition-duration: 0.4s;
