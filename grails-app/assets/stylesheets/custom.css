@@ -3,7 +3,8 @@
 ----------------------------------------- */
 body {
     /*background-color: #96DED1 !important;*/
-    background-color: rgba(150, 222, 209, 0.65) !important;
+    /*background-color: rgba(150, 222, 209, 0.65) !important;*/
+    background-color: #f9f9f9 !important;
 }
 
 .calcoloUscitaOra {
@@ -635,11 +636,11 @@ body > .pgn-wrapper {
 }
 
 .category-title-box-index {
-    background-color: #32c8de !important;
+    background-color: #DBE0E1 !important;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
-    color: #ffffff;
+    color: #000;
     height: 35px;
     margin: -14px 5px 0px 5px;
 }
@@ -654,4 +655,11 @@ body > .pgn-wrapper {
     font-weight: bold;
     margin-right: 15px;
     margin-top: 10px;
+}
+
+.logo-text {
+    font-weight: bold;
+    font-family: 'Paytone One', sans-serif;
+    text-shadow: 1px 1px #000;
+    font-size: 30px;
 }
