@@ -1,7 +1,6 @@
-package calcolouscita
+package it.longo
 
 import grails.plugin.springsecurity.SpringSecurityUtils
-import grails.plugin.springsecurity.userdetails.GrailsUser
 import grails.plugin.springsecurity.userdetails.GrailsUserDetailsService
 import grails.transaction.Transactional
 import it.longo.CustomUserDetails

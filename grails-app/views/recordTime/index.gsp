@@ -4,32 +4,24 @@
 	<head>
 		<title>Dettaglio mese</title>
         <asset:stylesheet src="bootstrap-editable.css"/>
-        <asset:javascript src="bootstrap-datetimepicker.js"/>
+        <asset:javascript src="monthpicker.js"/>
+        <asset:stylesheet src="monthpicker.css"/>
 	</head>
 	<body>
 
+    <mh:breadcrumb leaf="Dettaglio mese"/>
+
     <div class="row">
-        <div class="col-xs-11 heading">
-            <h1 class="page-header"><i class="fa fa-calendar-empty"></i> Dettaglio del mese</h1>
-            <ul id="crumb" class="breadcrumb"></ul>
-        </div>
-        <div id="helpBtn" style="margin-top: 60px;" class="col-xs-1 heading" data-toggle="tooltip" data-placement="top" title="" data-original-title="Come si usa?">
-            <span style="  font-size: 30px;" class="fa-stack fa-lg">
-                <i class="fa fa-circle fa-stack-2x"></i>
-                <i class="fa fa-question fa-stack-1x fa-inverse"></i>
-            </span>
+        <div class="col-xs-12">
+            <div class="alert alert-info">
+                <i class="fa fa-info-circle fa-fw fa-lg"></i>
+                <strong>Come si usa?</strong>
+                <p>Clicca su un orario per modificarlo.</p>
+                <p style="margin-top: -5px;">Se è il primo orario di un giorno, clicca sul pulsante verde che comparirà per salvarlo.</p>
+                <p style="margin-top: -5px;">Per eliminare tutti gli orari di un giorno, clicca sul pulsante rosso 'Elimina'.</p>
+            </div>
         </div>
     </div>
-
-    <br/>
-
-    <div id="helpBox" style="display: none;   margin-top: -15px;" class="bs-callout bs-callout-primary fade in">
-        <h4><i class="fa fa-question-circle"></i> Come si usa?</h4>
-        <p>Clicca su un orario per modificarlo.</p>
-        <p style="margin-top: -5px;">Se è il primo orario di un giorno, clicca sul pulsante verde che comparirà per salvarlo.</p>
-        <p style="margin-top: -5px;">Per eliminare tutti gli orari di un giorno, clicca sul pulsante rosso 'Elimina'.</p>
-    </div>
-
 
     <div class="row">
         <div class="col-xs-12">
@@ -40,19 +32,18 @@
                             <g:link mapping="dettaglio-mese" params="[month: prevMonth.format('MM'), year: prevMonth.format('yyyy')]"><h2 class="title-month"><i class="fa fa-chevron-left"></i></h2></g:link>
                         </div>
                         <div class="col-xs-5 text-right">
-                            <h2 class="title-month" id="monthTitle"></h2>
+                            <h2 class="title-month-blue" id="monthTitle"></h2>
                         </div>
                         <div class="col-xs-3">
                             <div style="margin-top: 20px;" class="input-group">
-                                <input id="monthValue" class="form-control datepicker" type="text" value="" placeholder="Seleziona un altro mese">
-                                <span class="input-group-addon"><i class="fa-calendar"></i></span>
+                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                <input type="text" class="form-control" id="datepickerDate">
                             </div>
                         </div>
                         <div class="col-xs-offset-2 col-xs-1 text-right">
                             <g:link mapping="dettaglio-mese" params="[month: nextMonth.format('MM'), year: nextMonth.format('yyyy')]"><h2 class="title-month"><i class="fa fa-chevron-right"></i></h2></g:link>
                         </div>
                     </div>
-
                 </div>
                 <div class="panel-body">
                     <table class="table table-hover" id="recordTable2">
@@ -69,7 +60,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <util:printTable records="${records}" month="${month}" year="${year}"/>
+                        <mh:printTable records="${records}" month="${month}" year="${year}"/>
                         </tbody>
                     </table>
                     <div class="pagination">
@@ -96,7 +87,29 @@
     </div>
 
     <g:javascript>
+
+        function formatMonthNumber(n){
+            return n > 9 ? "" + n: "0" + n;
+        }
+
         $(document).ready(function() {
+
+            $('#datepickerDate').datepicker( {
+                changeMonth: true,
+                changeYear: true,
+                showButtonPanel: true,
+                dateFormat: 'MM yy',
+                onClose: function(dateText, inst) {
+                    var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
+                    var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+                    $(this).datepicker('setDate', new Date(year, month, 1));
+
+                    var value = $('#monthValue').val();
+                    var link2 = encodeURI('${createLink(controller: 'recordTime' , action:'selectMonth')}');
+                    window.location = link2 + '/' + formatMonthNumber(parseInt(month)+1) + '/' + year;
+
+                }
+            });
 
             $("#helpBtn").click(function() {
                 $("#helpBox").toggle("slow");

@@ -9,6 +9,11 @@
 <asset:javascript src="scripts.js"/>
 <asset:javascript src="pace.min.js"/>
 
+<asset:javascript src="jquery.nanoscroller.min.js"/>
+
+<asset:javascript src="bootstrap-datetimepicker.js"/>
+<asset:javascript src="bootstrap-editable.js"/>
+
 <footer id="footer-bar" class="row">
     <p id="footer-copyright" class="col-xs-12">
         Powered by Cube Theme.

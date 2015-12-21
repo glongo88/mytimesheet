@@ -1,17 +1,15 @@
-package calcolouscita
+package it.longo
 
-import it.longo.RecordTime
 import org.joda.time.DateMidnight
 import org.joda.time.DateTime
-import org.joda.time.LocalDate
 import org.joda.time.format.DateTimeFormat
 import org.joda.time.format.DateTimeFormatter
 
-class UtilsTaglibTagLib {
-    //static defaultEncodeAs = [taglib:'html']
+class UtilsTaglib {
+    static defaultEncodeAs = [taglib:'html']
     //static encodeAsForTags = [tagName: [taglib:'html'], otherTagName: [taglib:'none']]
 
-    static namespace = "util"
+    static namespace = "utils"
 
     def springSecurityService
 
@@ -65,5 +63,11 @@ class UtilsTaglibTagLib {
         } else {
             out << ""
         }
+    }
+
+    def breadcrumb = { attrs ->
+        println "qui"
+        def leaf = attrs?.leaf
+        out << g.render(template: "/common/breadcrumb", model: [leaf: leaf])
     }
 }

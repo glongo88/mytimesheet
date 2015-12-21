@@ -84,7 +84,7 @@
                 </li>
                 <li class="item first-item">
                     <a href="#">
-                        <img src="img/samples/messages-photo-1.png" alt=""/>
+                        %{--<img src="img/samples/messages-photo-1.png" alt=""/>--}%
                         <span class="content">
                             <span class="content-headline">
                                 George Clooney
@@ -99,7 +99,7 @@
                 </li>
                 <li class="item">
                     <a href="#">
-                        <img src="img/samples/messages-photo-2.png" alt=""/>
+                        %{--<img src="img/samples/messages-photo-2.png" alt=""/>--}%
                         <span class="content">
                             <span class="content-headline">
                                 Emma Watson
@@ -114,7 +114,7 @@
                 </li>
                 <li class="item">
                     <a href="#">
-                        <img src="img/samples/messages-photo-3.png" alt=""/>
+                        %{--<img src="img/samples/messages-photo-3.png" alt=""/>--}%
                         <span class="content">
                             <span class="content-headline">
                                 Robert Downey Jr.
@@ -211,7 +211,7 @@
         </li>
         <li class="dropdown profile-dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <g:img dir="images" file="user.png"/>
+                <asset:image src="user.png"/>
                 <span class="hidden-xs"><sec:loggedInUserInfo field="nome"/> <sec:loggedInUserInfo field="cognome"/></span> <b class="caret"></b>
             </a>
             <ul class="dropdown-menu dropdown-menu-right">

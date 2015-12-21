@@ -1,4 +1,4 @@
-package calcolouscita
+package it.longo
 
 import grails.transaction.Transactional
 import groovy.time.TimeCategory

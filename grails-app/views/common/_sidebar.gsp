@@ -2,7 +2,7 @@
     <section id="col-left" class="col-left-nano">
         <div id="col-left-inner" class="col-left-nano-content">
             <div id="user-left-box" class="clearfix hidden-sm hidden-xs dropdown profile2-dropdown">
-                <g:img dir="images" file="user.png"/>
+                <asset:image src="user.png"/>
                 <div class="user-box">
                     <span class="name">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">

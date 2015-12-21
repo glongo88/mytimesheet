@@ -11,12 +11,9 @@
 
 <body>
 
-<div style="margin-top: 20px;" class="row">
-    <div class="col-lg-9 col-md-9 heading">
-        <ul id="crumb" class="breadcrumb">
-        </ul>
-    </div>
+<mh:breadcrumb leaf="Riepilogo mese"/>
 
+<div class="row">
     <div class="col-lg-3 col-md-3 text-center">
         <div class="input-group">
             <input id="monthValue" style="height: 50px;" class="form-control datepicker" type="text" value="" placeholder="Seleziona un altro mese">
@@ -48,7 +45,7 @@
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-center">
                         <div class="box-riepilogo" style="background-color: #48D1CC;">
                             <div class="riepilogo-label">Ore</div>
-                            <div class="riepilogo-value"><util:printMinutesSimple minuti="${stats['totaleLavorato']}"/></div>
+                            <div class="riepilogo-value"><mh:printMinutesSimple minuti="${stats['totaleLavorato']}"/></div>
                         </div>
                     </div>
                 </div>
@@ -66,13 +63,13 @@
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-center">
                         <div class="box-riepilogo" style="background-color: #48D1CC;">
                             <div class="riepilogo-label">Media ore al giorno</div>
-                            <div class="riepilogo-value"><util:printMinutesSimple minuti="${stats['avgTotaleLavorato']}"/></div>
+                            <div class="riepilogo-value"><mh:printMinutesSimple minuti="${stats['avgTotaleLavorato']}"/></div>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-center">
                         <div class="box-riepilogo" style="background-color: #48D1CC;">
                             <div class="riepilogo-label">Media pausa pranzo</div>
-                            <div class="riepilogo-value"><util:printMinutesSimple minuti="${stats['avgPausaPranzo']}"/></div>
+                            <div class="riepilogo-value"><mh:printMinutesSimple minuti="${stats['avgPausaPranzo']}"/></div>
                         </div>
                     </div>
                 </div>
@@ -94,7 +91,7 @@
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
                         <div class="box-riepilogo" style="background-color: #48D1CC;">
                             <div class="riepilogo-label">Ore</div>
-                            <div class="riepilogo-value"><util:printMinutesSimple minuti="${stats['minutiStraordinario']}"/></div>
+                            <div class="riepilogo-value"><mh:printMinutesSimple minuti="${stats['minutiStraordinario']}"/></div>
                         </div>
                     </div>
                 </div>
@@ -295,9 +292,9 @@
                 yaxis: {
                     min: 0,
                     //ticks: suffixFormatter(v, axis)
-                    ticks: [[0, "0 ore"], [100, "${util.printMinutes(minuti: 100)}"], [200, "${util.printMinutes(minuti: 200)}"],
-                    [300, "${util.printMinutes(minuti: 300)}"], [400, "${util.printMinutes(minuti: 400)}"], [500, "${util.printMinutes(minuti: 500)}"],
-                    [600, "${util.printMinutes(minuti: 600)}"]]
+                    ticks: [[0, "0 ore"], [100, "${mh.printMinutes(minuti: 100)}"], [200, "${mh.printMinutes(minuti: 200)}"],
+                    [300, "${mh.printMinutes(minuti: 300)}"], [400, "${mh.printMinutes(minuti: 400)}"], [500, "${mh.printMinutes(minuti: 500)}"],
+                    [600, "${mh.printMinutes(minuti: 600)}"]]
                 },
                 xaxis: {
                     mode: "time",
